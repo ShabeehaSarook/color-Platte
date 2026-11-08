@@ -1,0 +1,13 @@
+.git
+.agents
+.taste-skill
+.npm-cache
+.netlify
+.next
+node_modules
+out
+shots
+*.tsbuildinfo
+weightai-netlify.zip
+skills-lock.json
+.env*

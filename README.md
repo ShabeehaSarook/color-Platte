@@ -18,3 +18,11 @@ Dependencies use the npm stable `latest` dist-tag. Install resolves the versions
 Keep both `.next/types/**/*.ts` and `.next/dev/types/**/*.ts` in `tsconfig.json`. Next.js generates production and development route types separately and may add these paths automatically. The configuration update message is informational.
 
 `npm run typecheck` generates Next.js route types before checking TypeScript, so it also works before the first development run. Let Next.js manage `next-env.d.ts`.
+
+## Vercel deployment
+
+Import `ShabeehaSarook/color-Platte` in Vercel and use the repository root as the Root Directory. The committed `vercel.json` sets the Next.js framework, `npm ci` install command, `npm run build` build command, and `out` output directory. Select Node.js 24.x in the project settings. This palette library requires no environment variables.
+
+The app uses `output: 'export'` in `next.config.ts`. Vercel serves the generated HTML, CSS, and JavaScript; palette selection, clipboard actions, and CSS downloads run in the browser. No server functions or catch-all rewrites are needed.
+
+Once the repository is connected in Vercel, pushes to its configured production branch deploy automatically; other branches receive preview deployments. Local Vercel account links and build artifacts are excluded from uploads and Git.

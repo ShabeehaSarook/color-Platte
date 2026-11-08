@@ -21,8 +21,10 @@ Keep both `.next/types/**/*.ts` and `.next/dev/types/**/*.ts` in `tsconfig.json`
 
 ## Vercel deployment
 
-Import `ShabeehaSarook/color-Platte` in Vercel and use the repository root as the Root Directory. The committed `vercel.json` sets the Next.js framework, `npm ci` install command, `npm run build` build command, and `out` output directory. Select Node.js 24.x in the project settings. This palette library requires no environment variables.
+Import `ShabeehaSarook/color-Platte` in Vercel and use the repository root as the Root Directory. The committed `vercel.json` sets the Next.js framework, `npm ci` install command, and `npm run build` build command. Leave the Output Directory override disabled so Vercel uses the Next.js default (`.next`). Select Node.js 24.x in the project settings. This palette library requires no environment variables.
 
-The app uses `output: 'export'` in `next.config.ts`. Vercel serves the generated HTML, CSS, and JavaScript; palette selection, clipboard actions, and CSS downloads run in the browser. No server functions or catch-all rewrites are needed.
+The app uses `output: 'export'` in `next.config.ts`. Next.js writes its framework manifests to `.next` and the exported site to `out`. Vercel's Next.js adapter reads the manifests and handles the static export automatically; do not set its Output Directory to `out` or copy manifests there. Netlify continues to publish `out` using `netlify.toml`. Palette selection, clipboard actions, and CSS downloads run in the browser. No server functions or catch-all rewrites are needed.
+
+If a previous Vercel deployment failed with `out/routes-manifest.json` missing, disable the Output Directory override in Project Settings → Build and Deployment, then redeploy the updated commit with the previous build cache disabled.
 
 Once the repository is connected in Vercel, pushes to its configured production branch deploy automatically; other branches receive preview deployments. Local Vercel account links and build artifacts are excluded from uploads and Git.

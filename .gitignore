@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+.npm-cache/
+*.tsbuildinfo
+next-env.d.ts
+.netlify/
+.agents/
+.taste-skill/
+shots/
+skills-lock.json
+weightai-netlify.zip
+.env*
+!.env.example

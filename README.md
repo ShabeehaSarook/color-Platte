@@ -21,7 +21,7 @@ Keep both `.next/types/**/*.ts` and `.next/dev/types/**/*.ts` in `tsconfig.json`
 
 ## Vercel deployment
 
-Import `ShabeehaSarook/color-Platte` in Vercel and use the repository root as the Root Directory. The committed `vercel.json` sets the Next.js framework, `npm ci` install command, and `npm run build` build command. Leave the Output Directory override disabled so Vercel uses the Next.js default (`.next`). Select Node.js 24.x in the project settings. This palette library requires no environment variables.
+Import `ShabeehaSarook/color-Platte` in Vercel and use the repository root as the Root Directory. The committed `vercel.json` sets the Next.js framework, `npm ci --no-audit --no-fund` install command, `npm run build` build command, and `npm run dev` development command. Installation uses the committed lockfile and skips audit and funding requests during deployment. `outputDirectory: null` explicitly selects automatic framework output detection, so the Next.js adapter can read its `.next` manifests. Leave the dashboard Output Directory override disabled as well. Select Node.js 24.x in the project settings. This palette library requires no environment variables.
 
 The app uses `output: 'export'` in `next.config.ts`. Next.js writes its framework manifests to `.next` and the exported site to `out`. Vercel's Next.js adapter reads the manifests and handles the static export automatically; do not set its Output Directory to `out` or copy manifests there. Netlify continues to publish `out` using `netlify.toml`. Palette selection, clipboard actions, and CSS downloads run in the browser. No server functions or catch-all rewrites are needed.
 
